@@ -11,16 +11,18 @@ import android.widget.Button;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class FragmentTest extends AppCompatActivity implements View.OnClickListener{
 
     Button btn1;
     Button btn2;
     Button btn3;
+    Button btn4;
 
     FragmentManager manager;
     OneFragment oneFragment;
     TwoFragment twoFragment;
     ThreeFragment threeFragment;
+    SettingPreferenceFragment settingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn1=findViewById(R.id.main_btn1);
         btn2=findViewById(R.id.main_btn2);
         btn3=findViewById(R.id.main_btn3);
+        btn4=findViewById(R.id.main_btn4);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
 
         manager=getSupportFragmentManager();
         oneFragment=new OneFragment();
         twoFragment=new TwoFragment();
         threeFragment=new ThreeFragment();
+        settingFragment=new SettingPreferenceFragment();
 
         FragmentTransaction tf=manager.beginTransaction();
         tf.addToBackStack(null);
@@ -70,6 +75,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tf.addToBackStack(null);
                 tf.replace(R.id.main_container, threeFragment);
                 tf.commit();
+            }
+        }else if(v==btn4){
+            if(!settingFragment.isVisible()){
+                FragmentTransaction tran=manager.beginTransaction();
+                tran.addToBackStack(null);
+                tran.replace(R.id.main_container, settingFragment);
+                tran.commit();
             }
         }
     }

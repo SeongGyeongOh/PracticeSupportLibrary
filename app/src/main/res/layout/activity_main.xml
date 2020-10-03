@@ -27,6 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Fragment 3"/>
+        <Button
+            android:id="@+id/main_btn4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fragment 4"/>
+
     </LinearLayout>
     <LinearLayout
         android:id="@+id/main_container"
